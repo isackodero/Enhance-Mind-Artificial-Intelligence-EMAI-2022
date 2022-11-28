@@ -178,40 +178,40 @@
 <h3>How to adjust learning rate using Pytorch</h3>
 <p><u><i>torch.optim.lr_scheduler</i></u> provides several methods to adjust the learning rate based on the number of epochs.</p>
    
-  ```python
+```python
   
   #define your model
-    model = model
+  model = model
    
-    #choose your optimizer
-    optimizer = SGD(model.parameters(), 0.1)
+  #choose your optimizer
+  optimizer = SGD(model.parameters(), 0.1)
    
-    #define how you want to adjust your learnign rate
-    scheduler = ExponentialLR(optimizer, gamma=0.9)
+  #define how you want to adjust your learnign rate
+  scheduler = ExponentialLR(optimizer, gamma=0.9)
    
-    training loop
-    for epoch in range(20):
+  training loop
+  for epoch in range(20):
    
-        #load datasets
-        for input, target in dataset:
-            #zero all of your previous gradients
-            optimizer.zero_grad()
+  #load datasets
+     for input, target in dataset:
+         #zero all of your previous gradients
+         optimizer.zero_grad()
             
-            #forward propagation
-            output = model(input)
+         #forward propagation
+         output = model(input)
             
-            #loss function
-            loss = loss_fn(output, target)
+         #loss function
+         loss = loss_fn(output, target)
             
-           #back propagation
-            loss.backward()
+         #back propagation
+         loss.backward()
             
-            #optimization
-            optimizer.step()
+         #optimization
+         optimizer.step()
             
         #update your learning rate after every epoch
-        scheduler.step()  
-    ```
+       scheduler.step()  
+ ```
     
  <h3>Gradient Descent Algorithms</h3>
  <br><li>SGD<i>{{ torch.optim.SGD(**args) }}</i></li><br>

@@ -169,7 +169,8 @@
     
     <h4>How to deal with this?</h4>
     
-    <br><lh>Idea 1:</lh><li>Try lots of different learning rates and see what works \"just  right\" </li><br><br><lh>Idea 2:</lh><li>Do something smarter! <br> Design an adaptive learning rate that \"adapts\" to the landscape</li>
+    <br><lh>Idea 1:</lh><li>Try lots of different learning rates and see what works \"just  right\" </li><br><br>
+   <lh>Idea 2:</lh><li>Do something smarter! <br> Design an adaptive learning rate that \"adapts\" to the landscape</li>
     <h4>Adaptive Learning Rates</h4>
     <br><lh>- Learnign Rate are not longer fixed </lh><br><br><lh>- Can be made larger or smaller depending on </lh><br><li>how large gradient is </li><br><li>How fast learning is happening</li><br><li>size of particular weights</li></li>
     <h3>How to adjust learning rate using Pytorch</h3>

@@ -164,23 +164,17 @@
     <img src='img/Screenshot from 2022-11-17 02-22-26.png'><br><img src='img/Screenshot from 2022-11-17 02-23-09.png'><br><img src='img/Screenshot from 2022-11-17 02-24-46.png'><br><p>Repeat this for every weight in the network using gradients from later layers</p>
     <h3>Neural Network in Practice: Optimization</h3>
     <img src='img/Screenshot from 2022-11-15 22-23-41.png'><br><h4>Loss Functions Can Be Difficult to Optimize</h4><br><br><h5>Remember:</h5><br><p>Optimization through gradient descent</p><br><img src='img/Screenshot from 2022-11-17 02-31-38.png'><br><img src='img/Screenshot from 2022-11-17 02-32-28.png'>
-    <h4>Setting the Learning Rate</h4>\n",
-    "<br><p>Small Lerning Rate converge and gets stuck in False local minima</p><br><br><p>Large Lerning Rate overshoot, become unstable and diverge</p><br><br><p>Stable Lerning Rate converge smoothly and avoid local minima</p><br>
+    <h4>Setting the Learning Rate</h4>
+    <br><p>Small Lerning Rate converge and gets stuck in False local minima</p><br><br><p>Large Lerning Rate overshoot, become unstable and diverge</p><br><br><p>Stable Lerning Rate converge smoothly and avoid local minima</p><br>
     <h4>How to deal with this?</h4>
     
     <br><lh>Idea 1:</lh><li>Try lots of different learning rates and see what works \"just  right\" </li><br><br><lh>Idea 2:</lh><li>Do something smarter! <br> Design an adaptive learning rate that \"adapts\" to the landscape</li>
-    <h4>Adaptive Learning Rates</h4>\n",
-    "<br><lh>- Learnign Rate are not longer fixed </lh><br><br><lh>- Can be made larger or smaller depending on </lh><br><li>how large gradient is </li><br><li>How fast learning is happening</li><br><li>size of particular weights</li></li>
+    <h4>Adaptive Learning Rates</h4>
+    <br><lh>- Learnign Rate are not longer fixed </lh><br><br><lh>- Can be made larger or smaller depending on </lh><br><li>how large gradient is </li><br><li>How fast learning is happening</li><br><li>size of particular weights</li></li>
     <h3>How to adjust learning rate using Pytorch</h3>
    <p><u><i>torch.optim.lr_scheduler</i></u> provides several methods to adjust the learning rate based on the number of epochs.</p>
-   ]
-  },
-  {
-   "cell_type": "raw",
-   "id": "6f321004",
-   "metadata": {},
-   "source": [
-    "#define your model\n",
+  ```python
+  #define your model\n",
     "model = model\n",
     "\n",
     "#choose your optimizer\n",
@@ -211,30 +205,13 @@
     "        optimizer.step()\n",
     "        \n",
     "    #update your learning rate after every epoch\n",
-    "    scheduler.step()"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "10d55dac",
-   "metadata": {},
-   "source": [
-    "<h3>Gradient Descent Algorithms</h3><br><li>SGD               <i>{{ torch.optim.SGD(**args) }}</i></li><br><li>Adam  <i>{{torch.optim.Adam(**args) }}</i></li><br><li>Adafelta  <i>{{torch.optim.Adafelta(**args) }}</i></li><br><li>Adagrad  <i>{{torch.optim.Adagrad(**args) }}</i></li><br><li>RMSProp  <i>{{torch.optim.RMSProp(**args) }}</i></li>"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "1a404553",
-   "metadata": {},
-   "source": [
-    "<h4>Putting it all together</h4>"
-   ]
-  },
-  {
-   "cell_type": "raw",
-   "id": "db10877e",
-   "metadata": {},
-   "source": [
+    "    scheduler.step()
+    ```
+    
+    <h3>Gradient Descent Algorithms</h3><br><li>SGD               <i>{{ torch.optim.SGD(**args) }}</i></li><br><li>Adam  <i>{{torch.optim.Adam(**args) }}</i></li><br><li>Adafelta  <i>{{torch.optim.Adafelta(**args) }}</i></li><br><li>Adagrad  <i>{{torch.optim.Adagrad(**args) }}</i></li><br><li>RMSProp  <i>{{torch.optim.RMSProp(**args) }}</i></li>
+    <h4>Putting it all together</h4>
+    ```python 
+    
     "for input, target in dataset:\n",
     "    #Clearning the old gradients from the last step\n",
     "    optimizer.zero_grad()\n",
@@ -249,15 +226,10 @@
     "    loss.backward()\n",
     "    \n",
     "    #Taking steps toward local minima\n",
-    "    optimizer.step()"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "fbba1b25",
-   "metadata": {},
-   "source": [
-    "<h1>Now Let Make all of that make sense</h1>"
+    "    optimizer.step()
+    ```
+    
+    <h1>Now Let Make all of that make sense</h1>
    ]
   },
   {

@@ -19,6 +19,7 @@
    ```
   ```
   Using cpu device
+   
   ```
   ```
   class Perceptron(nn.Module):\n",
@@ -34,7 +35,7 @@
     "        x=self.flatten(x)\n",
     "        y_hat=self.layers(x)\n",
     "        return y_hat
-    ```
+   ```
    ]
   },
   {

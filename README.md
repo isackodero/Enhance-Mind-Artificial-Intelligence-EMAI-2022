@@ -179,58 +179,60 @@
   
   #define your model
     model = model
-    \n",
-    #choose your optimizer\n",
-    optimizer = SGD(model.parameters(), 0.1)\n",
-    \n",
-    #define how you want to adjust your learnign rate\n",
-    scheduler = ExponentialLR(optimizer, gamma=0.9)\n",
-    n",
-    training loop\n",
-    for epoch in range(20):\n",
-        \n",
-        #load datasets\n",
+   
+    #choose your optimizer
+    optimizer = SGD(model.parameters(), 0.1)
+   
+    #define how you want to adjust your learnign rate
+    scheduler = ExponentialLR(optimizer, gamma=0.9)
+   
+    training loop
+    for epoch in range(20):
+   
+        #load datasets
         for input, target in dataset:
             #zero all of your previous gradients
             optimizer.zero_grad()
             
-            #forward propagation\n",
+            #forward propagation
             output = model(input)
             
-            #loss function\n",
+            #loss function
             loss = loss_fn(output, target)
             
-           #back propagation\n",
+           #back propagation
             loss.backward()
             
-            #optimization\n",
+            #optimization
             optimizer.step()
             
-        #update your learning rate after every epoch\n",
+        #update your learning rate after every epoch
         scheduler.step()
         
     ```
     
-    <h3>Gradient Descent Algorithms</h3><br><li>SGD               <i>{{ torch.optim.SGD(**args) }}</i></li><br><li>Adam  <i>{{torch.optim.Adam(**args) }}</i></li><br><li>Adafelta  <i>{{torch.optim.Adafelta(**args) }}</i></li><br><li>Adagrad  <i>{{torch.optim.Adagrad(**args) }}</i></li><br><li>RMSProp  <i>{{torch.optim.RMSProp(**args) }}</i></li>
+ <h3>Gradient Descent Algorithms</h3><br><li>SGD<i>{{ torch.optim.SGD(**args) }}</i></li><br>
+   <li>Adam  <i>{{torch.optim.Adam(**args) }}</i></li><br><li>Adafelta  <i>{{torch.optim.Adafelta(**args) }}</i></li><br><li>Adagrad  <i>{{torch.optim.Adagrad(**args) }}</i></li><br><li>RMSProp  <i>{{torch.optim.RMSProp(**args) }}</i></li>
     <h4>Putting it all together</h4>
     
     ```python 
     
-    "for input, target in dataset:\n",
-    "    #Clearning the old gradients from the last step\n",
-    "    optimizer.zero_grad()\n",
-    "    \n",
-    "    #Forward Propagation\n",
-    "    output = model(input)\n",
-    "    \n",
-    "    #calculation loss\n",
-    "    loss = loss_fn(output, target)\n",
-    "    \n",
-    "    #Calculating gradients of the loss w.r.t weights\n",
-    "    loss.backward()\n",
-    "    \n",
-    "    #Taking steps toward local minima\n",
-    "    optimizer.step()
+    for input, target in dataset:
+        #Clearning the old gradients from the last step
+        optimizer.zero_grad()
+   
+        #Forward Propagation
+        output = model(input)
+   
+        #calculation loss
+        loss = loss_fn(output, target)
+   
+        #Calculating gradients of the loss w.r.t weights
+        loss.backward()
+   
+        #Taking steps toward local minima
+        optimizer.step()
+   
     ```
     
     <h1>Now Let Make all of that make sense</h1>

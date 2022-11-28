@@ -207,15 +207,19 @@
             optimizer.step()
             
         #update your learning rate after every epoch
-        scheduler.step()
-        
+        scheduler.step()  
     ```
     
- <h3>Gradient Descent Algorithms</h3><br><li>SGD<i>{{ torch.optim.SGD(**args) }}</i></li><br>
-   <li>Adam  <i>{{torch.optim.Adam(**args) }}</i></li><br><li>Adafelta  <i>{{torch.optim.Adafelta(**args) }}</i></li><br><li>Adagrad  <i>{{torch.optim.Adagrad(**args) }}</i></li><br><li>RMSProp  <i>{{torch.optim.RMSProp(**args) }}</i></li>
+ <h3>Gradient Descent Algorithms</h3>
+   <br><li>SGD<i>{{ torch.optim.SGD(**args) }}</i></li><br>
+   <li>Adam  <i>{{torch.optim.Adam(**args) }}</i></li>
+   <br><li>Adafelta  <i>{{torch.optim.Adafelta(**args) }}</i></li>
+   <br><li>Adagrad  <i>{{torch.optim.Adagrad(**args) }}</i></li>
+   <br><li>RMSProp  <i>{{torch.optim.RMSProp(**args) }}</i></li>
+   
     <h4>Putting it all together</h4>
     
-    ```python 
+   ```python 
     
     for input, target in dataset:
         #Clearning the old gradients from the last step
@@ -233,7 +237,7 @@
         #Taking steps toward local minima
         optimizer.step()
    
-    ```
+   ```
     
     <h1>Now Let Make all of that make sense</h1>
    ]

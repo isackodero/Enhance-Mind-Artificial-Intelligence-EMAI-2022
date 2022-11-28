@@ -53,6 +53,7 @@
    
    <h3>Single Layer Neural Network</h3><br><img src='img/Screenshot from 2022-11-16 00-50-55.png'><br><img src='img/Screenshot from 2022-11-16 00-53-02.png'><br><img src='img/Screenshot from 2022-11-16 00-53-02.png'>
    <img src='img/Screenshot from 2022-11-16 00-54-38.png'><br><img src='img/Screenshot from 2022-11-16 00-55-48.png'><br><img src='img/Screenshot from 2022-11-16 00-56-24.png'>
+   
    ```python
    
    class SingleLayerNN(nn.Module):
@@ -72,11 +73,14 @@
    ```
    
    ```python
+   
     model=SingleLayerNN()
     
     print(model)
+   
    ```
    ```python
+   
    image=torch.rand(1,32,32)
    
    y=model(image)
@@ -87,6 +91,7 @@
    <h3>Deep Neural Network</h3><br><img src='img/Screenshot from 2022-11-16 01-14-00.png'><br><img src='img/Screenshot from 2022-11-16 01-14-33.png'>
    
    ```python
+   
    class DeepNN(nn.Module):
         def __init__(self):
             super().__init__()

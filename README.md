@@ -167,14 +167,16 @@
     <h4>Setting the Learning Rate</h4>
     <br><p>Small Lerning Rate converge and gets stuck in False local minima</p><br><br><p>Large Lerning Rate overshoot, become unstable and diverge</p><br><br><p>Stable Lerning Rate converge smoothly and avoid local minima</p><br>
     
-    <h4>How to deal with this?</h4>
+<h4>How to deal with this?</h4>
     
-    <br><lh>Idea 1:</lh><li>Try lots of different learning rates and see what works \"just  right\" </li><br><br>
-   <lh>Idea 2:</lh><li>Do something smarter! <br> Design an adaptive learning rate that \"adapts\" to the landscape</li>
+<br><lh>Idea 1:</lh><li>Try lots of different learning rates and see what works \"just  right\" </li><br><br>
+
+<lh>Idea 2:</lh><li>Do something smarter! <br> Design an adaptive learning rate that \"adapts\" to the landscape</li>
     <h4>Adaptive Learning Rates</h4>
     <br><lh>- Learnign Rate are not longer fixed </lh><br><br><lh>- Can be made larger or smaller depending on </lh><br><li>how large gradient is </li><br><li>How fast learning is happening</li><br><li>size of particular weights</li></li>
-    <h3>How to adjust learning rate using Pytorch</h3>
-   <p><u><i>torch.optim.lr_scheduler</i></u> provides several methods to adjust the learning rate based on the number of epochs.</p>
+    
+<h3>How to adjust learning rate using Pytorch</h3>
+<p><u><i>torch.optim.lr_scheduler</i></u> provides several methods to adjust the learning rate based on the number of epochs.</p>
    
   ```python
   

@@ -166,6 +166,7 @@
     <img src='img/Screenshot from 2022-11-15 22-23-41.png'><br><h4>Loss Functions Can Be Difficult to Optimize</h4><br><br><h5>Remember:</h5><br><p>Optimization through gradient descent</p><br><img src='img/Screenshot from 2022-11-17 02-31-38.png'><br><img src='img/Screenshot from 2022-11-17 02-32-28.png'>
     <h4>Setting the Learning Rate</h4>
     <br><p>Small Lerning Rate converge and gets stuck in False local minima</p><br><br><p>Large Lerning Rate overshoot, become unstable and diverge</p><br><br><p>Stable Lerning Rate converge smoothly and avoid local minima</p><br>
+    
     <h4>How to deal with this?</h4>
     
     <br><lh>Idea 1:</lh><li>Try lots of different learning rates and see what works \"just  right\" </li><br><br><lh>Idea 2:</lh><li>Do something smarter! <br> Design an adaptive learning rate that \"adapts\" to the landscape</li>
@@ -173,43 +174,46 @@
     <br><lh>- Learnign Rate are not longer fixed </lh><br><br><lh>- Can be made larger or smaller depending on </lh><br><li>how large gradient is </li><br><li>How fast learning is happening</li><br><li>size of particular weights</li></li>
     <h3>How to adjust learning rate using Pytorch</h3>
    <p><u><i>torch.optim.lr_scheduler</i></u> provides several methods to adjust the learning rate based on the number of epochs.</p>
+   
   ```python
-  #define your model\n",
-    "model = model\n",
-    "\n",
-    "#choose your optimizer\n",
-    "optimizer = SGD(model.parameters(), 0.1)\n",
-    "\n",
-    "#define how you want to adjust your learnign rate\n",
-    "scheduler = ExponentialLR(optimizer, gamma=0.9)\n",
-    "\n",
-    "#training loop\n",
-    "for epoch in range(20):\n",
-    "    \n",
-    "    #load datasets\n",
-    "    for input, target in dataset:\n",
-    "        \n",
-    "        #zero all of your previous gradients\n",
-    "        optimizer.zero_grad()\n",
-    "        \n",
-    "        #forward propagation\n",
-    "        output = model(input)\n",
-    "        \n",
-    "        #loss function\n",
-    "        loss = loss_fn(output, target)\n",
-    "        \n",
-    "        #back propagation\n",
-    "        loss.backward()\n",
-    "        \n",
-    "        #optimization\n",
-    "        optimizer.step()\n",
-    "        \n",
-    "    #update your learning rate after every epoch\n",
-    "    scheduler.step()
+  
+  #define your model
+    model = model
+    \n",
+    #choose your optimizer\n",
+    optimizer = SGD(model.parameters(), 0.1)\n",
+    \n",
+    #define how you want to adjust your learnign rate\n",
+    scheduler = ExponentialLR(optimizer, gamma=0.9)\n",
+    n",
+    training loop\n",
+    for epoch in range(20):\n",
+        \n",
+        #load datasets\n",
+        for input, target in dataset:
+            #zero all of your previous gradients
+            optimizer.zero_grad()
+            
+            #forward propagation\n",
+            output = model(input)
+            
+            #loss function\n",
+            loss = loss_fn(output, target)
+            
+           #back propagation\n",
+            loss.backward()
+            
+            #optimization\n",
+            optimizer.step()
+            
+        #update your learning rate after every epoch\n",
+        scheduler.step()
+        
     ```
     
     <h3>Gradient Descent Algorithms</h3><br><li>SGD               <i>{{ torch.optim.SGD(**args) }}</i></li><br><li>Adam  <i>{{torch.optim.Adam(**args) }}</i></li><br><li>Adafelta  <i>{{torch.optim.Adafelta(**args) }}</i></li><br><li>Adagrad  <i>{{torch.optim.Adagrad(**args) }}</i></li><br><li>RMSProp  <i>{{torch.optim.RMSProp(**args) }}</i></li>
     <h4>Putting it all together</h4>
+    
     ```python 
     
     "for input, target in dataset:\n",

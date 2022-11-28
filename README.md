@@ -42,419 +42,107 @@
    print(model
    ```
    
-   ```output
-   hhhhhhh
+   ```python
+   x=torch.tensor([[-1,2]], dtype=torch.float)
+   
+   y=model(x)
+   print(y)
    
    ```
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 10,
-   "id": "4713a2df",
-   "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "Perceptron(\n",
-      "  (flatten): Flatten(start_dim=1, end_dim=-1)\n",
-      "  (layers): Sequential(\n",
-      "    (0): Linear(in_features=2, out_features=1, bias=True)\n",
-      "    (1): Sigmoid()\n",
-      "  )\n",
-      ")\n"
-     ]
-    }
-   ],
-   "source": [
-    "model=Perceptron().to(device)\n",
-    "\n",
-    "print(model)"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 11,
-   "id": "95f5a309",
-   "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "tensor([[0.3478]], grad_fn=<SigmoidBackward0>)\n"
-     ]
-    }
-   ],
-   "source": [
-    "x=torch.tensor([[-1,2]], dtype=torch.float)\n",
-    "\n",
-    "y=model(x)\n",
-    "print(y)"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "e503e6a8",
-   "metadata": {},
-   "source": [
-    "<h3>Single Layer Neural Network</h3><br><img src='img/Screenshot from 2022-11-16 00-50-55.png'><br><img src='img/Screenshot from 2022-11-16 00-53-02.png'><br><img src='img/Screenshot from 2022-11-16 00-53-02.png'>"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "87b394a6",
-   "metadata": {},
-   "source": [
-    "<img src='img/Screenshot from 2022-11-16 00-54-38.png'><br><img src='img/Screenshot from 2022-11-16 00-55-48.png'><br><img src='img/Screenshot from 2022-11-16 00-56-24.png'>"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 12,
-   "id": "e60c7821",
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "class SingleLayerNN(nn.Module):\n",
-    "    def __init__(self):\n",
-    "        super().__init__()\n",
-    "        self.flatten=nn.Flatten()\n",
-    "        self.layers=nn.Sequential(\n",
-    "            nn.Linear(32*32,200),\n",
-    "            nn.ReLU(),\n",
-    "            nn.Linear(200, 2)\n",
-    "        )\n",
-    "        \n",
-    "    def forward(self, x):\n",
-    "        x=self.flatten(x)\n",
-    "        y_hat=self.layers(x)\n",
-    "        return y_hat"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 13,
-   "id": "b15a51e3",
-   "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "SingleLayerNN(\n",
-      "  (flatten): Flatten(start_dim=1, end_dim=-1)\n",
-      "  (layers): Sequential(\n",
-      "    (0): Linear(in_features=1024, out_features=200, bias=True)\n",
-      "    (1): ReLU()\n",
-      "    (2): Linear(in_features=200, out_features=2, bias=True)\n",
-      "  )\n",
-      ")\n"
-     ]
-    }
-   ],
-   "source": [
-    "model=SingleLayerNN()\n",
-    "\n",
-    "print(model)"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 14,
-   "id": "8b42adb5",
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "image=torch.rand(1,32,32)"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 15,
-   "id": "9dd9ad67",
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "y=model(image)"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 16,
-   "id": "dc94c869",
-   "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "tensor([[-0.0910, -0.1547]], grad_fn=<AddmmBackward0>)"
-      ]
-     },
-     "execution_count": 16,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
-   "source": [
-    "y"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "ad3e5f86",
-   "metadata": {},
-   "source": [
-    "<h3>Deep Neural Network</h3><br><img src='img/Screenshot from 2022-11-16 01-14-00.png'><br><img src='img/Screenshot from 2022-11-16 01-14-33.png'>"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 17,
-   "id": "6d7ed00d",
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "class DeepNN(nn.Module):\n",
-    "    def __init__(self):\n",
-    "        super().__init__()\n",
-    "        self.flatten=nn.Flatten()\n",
-    "        self.layers=nn.Sequential(\n",
-    "            nn.Linear(32*32,200),\n",
-    "            nn.ReLU(),\n",
-    "            nn.Linear(200, 200),\n",
-    "            nn.ReLU(),\n",
-    "            nn.Linear(200,100),\n",
-    "            nn.ReLU(),\n",
-    "            nn.Linear(100,10)\n",
-    "        )\n",
-    "        \n",
-    "    def forward(self, x):\n",
-    "        x=self.flatten(x)\n",
-    "        y_hat=self.layers(x)\n",
-    "        return y_hat"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 18,
-   "id": "6c15e18f",
-   "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "DeepNN(\n",
-      "  (flatten): Flatten(start_dim=1, end_dim=-1)\n",
-      "  (layers): Sequential(\n",
-      "    (0): Linear(in_features=1024, out_features=200, bias=True)\n",
-      "    (1): ReLU()\n",
-      "    (2): Linear(in_features=200, out_features=200, bias=True)\n",
-      "    (3): ReLU()\n",
-      "    (4): Linear(in_features=200, out_features=100, bias=True)\n",
-      "    (5): ReLU()\n",
-      "    (6): Linear(in_features=100, out_features=10, bias=True)\n",
-      "  )\n",
-      ")\n"
-     ]
-    }
-   ],
-   "source": [
-    "model=DeepNN()\n",
-    "\n",
-    "print(model)"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 19,
-   "id": "5c94c463",
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "y=model(image)"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 20,
-   "id": "9b419f50",
-   "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "1\n"
-     ]
-    }
-   ],
-   "source": [
-    "print(len(y))"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "e1753572",
-   "metadata": {},
-   "source": [
-    "<h4>Applying Neural Networks</h4><br><br><h5>Example Problem</h5><br><br><h5>Will You Pass if we decide to give an exam about the EMAI Conferrence presentations</h5><br><p>Let's start with a simple two feature model</p>\n",
-    "\n",
-    "<br><br><p>X_1= Number of lectures you attend<br> X_2 = Hours spent on the final project</p><br><img src='img/Screenshot from 2022-11-16 01-31-53.png'><br><img src='img/Screenshot from 2022-11-16 01-32-39.png'><br><img src='img/Screenshot from 2022-11-16 01-33-36.png'><br><img src='img/Screenshot from 2022-11-16 01-34-41.png'>"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "0ab01430",
-   "metadata": {},
-   "source": [
-    "<h3>Quantifying Loss</h3><br><p>The LOSS of this will measures the cost incurrect predictions<p/><br><img src='img/Screenshot from 2022-11-16 01-38-12.png'>"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "1beb0344",
-   "metadata": {},
-   "source": [
-    "<h3>Cost Function</h3><br><p>The Cost Function measures the total loss over our entire datasets</p><br><img src='img/Screenshot from 2022-11-16 01-39-58.png'><br><img src='img/Screenshot from 2022-11-16 01-40-54.png'>"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "92ff9d34",
-   "metadata": {},
-   "source": [
-    "<p>Here we will look two types of Loss</p><br><li>Binary Cross Entropy Loss</li><li>Mean Squared Error Loss</li>"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "0c0d115a",
-   "metadata": {},
-   "source": [
-    "<h5>Binary Cross Entropy Loss</h5><br><p>This is used with the models that output a probability between 0 and 1</p><br><img src='img/Screenshot from 2022-11-16 01-48-41.png'><br><img src='img/Screenshot from 2022-11-16 01-49-29.png'>"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 21,
-   "id": "7bd7daf9",
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "Loss=nn.CrossEntropyLoss()"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "35b17f5e",
-   "metadata": {},
-   "source": [
-    "<h5>Mean Squared Error Loss</h5><br><p>This is used with the regression models that output continuous real number</p><br><img src='img/Screenshot from 2022-11-15 22-07-39.png'><br>"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 22,
-   "id": "1e678b07",
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "Loss = nn.MSELoss()"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "16ba1264",
-   "metadata": {},
-   "source": [
-    "<h3>Deep Neural Network</h3><br><h4>Loss Optimization</h4><br><p>We want to find the network weights that achieve the lowest loss</p><br><img src='img/Screenshot from 2022-11-15 22-18-41.png'><br><img src='img/Screenshot from 2022-11-15 22-19-37.png'>"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "c99500eb",
-   "metadata": {},
-   "source": [
-    "<img src='img/Screenshot from 2022-11-15 22-20-20.png'>"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "22b64d03",
-   "metadata": {},
-   "source": [
-    "<img src='img/Screenshot from 2022-11-15 22-22-13.png'>"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "029e7a5b",
-   "metadata": {},
-   "source": [
-    "<img src='img/Screenshot from 2022-11-15 22-22-54.png'>"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "4ebb7d8e",
-   "metadata": {},
-   "source": [
-    "<h5>If you will repeat the above process, that is what we call Gradient Descent</h5>"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "22a12fba",
-   "metadata": {},
-   "source": [
-    "<img src='img/Screenshot from 2022-11-15 22-23-41.png'>"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "ef8dfe14",
-   "metadata": {},
-   "source": [
-    "<h3>Gradient Descent</h3>\n",
-    "<lh><b>Algorithm</b></lh><br><li>Initialize weights randomly <img src='img/Screenshot from 2022-11-15 22-26-45.png'></li><li>Loop until converging</li><br><li>Compute Gradient <img src='img/Screenshot from 2022-11-15 22-31-09.png'></li><li>Update weights <img src='img/Screenshot from 2022-11-15 22-32-21.png'></li><li>Return weights</li><br><img src='img/Screenshot from 2022-11-17 13-14-22.png'>"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "d64f4904",
-   "metadata": {},
-   "source": [
-    "<p>This approach have one problem : the gradients can be very Computationally Intensive to compute</p>"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "e270225c",
-   "metadata": {},
-   "source": [
-    "<h3>Gradient Descent</h3>\n",
-    "<lh><b>Algorithm</b></lh><br><li>Initialize weights randomly <img src='img/Screenshot from 2022-11-15 22-26-45.png'></li><li>Loop until converging</li><br><li>Pick single data point <img src='img/Screenshot from 2022-11-17 13-19-51.png'> </li><br><li>Compute Gradient <img src='img/Screenshot from 2022-11-17 13-20-58.png'></li><li>Update weights <img src='img/Screenshot from 2022-11-15 22-32-21.png'></li><li>Return weights</li><br><img src='img/Screenshot from 2022-11-17 13-14-22.png'>"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "1eb33752",
-   "metadata": {},
-   "source": [
-    "<p>Now using <br><li>Compute Gradient <img src='img/Screenshot from 2022-11-17 13-20-58.png'></li> <br>it become easy to compute but the problem is it is produce very noisy (stochastic)</p><br><p>Now to solve that problem the Stochastic Gradient Descent is used</p>"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "58f347b5",
-   "metadata": {},
-   "source": [
-    "<h3>Stochastic Gradient Descent</h3>\n",
-    "<lh><b>Algorithm</b></lh><br><li>Initialize weights randomly <img src='img/Screenshot from 2022-11-15 22-26-45.png'></li><li>Loop until converging</li><br><li>Pick batch of <i>B</i> data points </li><br><li>Compute Gradient <img src='img/Screenshot from 2022-11-17 13-31-49.png'></li><li>Update weights <img src='img/Screenshot from 2022-11-15 22-32-21.png'></li><li>Return weights</li><br><img src='img/Screenshot from 2022-11-17 13-14-22.png'><br><p><i>Now this become Fast to compute and a much better estimate of the true gradient</i></p>"
+   
+   <h3>Single Layer Neural Network</h3><br><img src='img/Screenshot from 2022-11-16 00-50-55.png'><br><img src='img/Screenshot from 2022-11-16 00-53-02.png'><br><img src='img/Screenshot from 2022-11-16 00-53-02.png'>
+   <img src='img/Screenshot from 2022-11-16 00-54-38.png'><br><img src='img/Screenshot from 2022-11-16 00-55-48.png'><br><img src='img/Screenshot from 2022-11-16 00-56-24.png'>
+   ```python
+   
+   class SingleLayerNN(nn.Module):
+        def __init__(self):
+            super().__init__()
+            self.flatten=nn.Flatten()
+            self.layers=nn.Sequential(
+                nn.Linear(32*32,200),
+                nn.ReLU(),
+                nn.Linear(200, 2)
+            )
+           
+        def forward(self, x):
+            x=self.flatten(x)
+            y_hat=self.layers(x)
+            return y_hat
+            
+   ```
+   ```python
+    model=SingleLayerNN()
+    
+    print(model)
+    ```
+   ```python
+   image=torch.rand(1,32,32)
+   
+   y=model(image)
+   print(y)
+   
+   ```
+   <h3>Deep Neural Network</h3><br><img src='img/Screenshot from 2022-11-16 01-14-00.png'><br><img src='img/Screenshot from 2022-11-16 01-14-33.png'>
+   
+   ```python
+   class DeepNN(nn.Module):
+        def __init__(self):
+            super().__init__()
+            self.flatten=nn.Flatten()
+            self.layers=nn.Sequential(
+                nn.Linear(32*32,200),\
+                nn.ReLU(),
+                nn.Linear(200, 200),\
+                nn.ReLU(),
+                nn.Linear(200,100),
+                nn.ReLU(),
+               nn.Linear(100,10)
+           )
+           
+        def forward(self, x):
+            x=self.flatten(x)
+            y_hat=self.layers(x)
+            return y_hat
+  ```
+   ```python
+   model=DeepNN()
+   print(model)
+   ```
+   
+   ```python
+   y=model(image)
+   
+   print(y)
+   ```
+  
+ <h4>Applying Neural Networks</h4><br><br><h5>Example Problem</h5><br><br><h5>Will You Pass if we decide to give an exam about the EMAI Conferrence presentations</h5><br><p>Let's start with a simple two feature model</p>
+ <br><br><p>X_1= Number of lectures you attend<br> X_2 = Hours spent on the final project</p><br><img src='img/Screenshot from 2022-11-16 01-31-53.png'><br><img src='img/Screenshot from 2022-11-16 01-32-39.png'><br><img src='img/Screenshot from 2022-11-16 01-33-36.png'><br><img src='img/Screenshot from 2022-11-16 01-34-41.png'>
+<h3>Quantifying Loss</h3><br><p>The LOSS of this will measures the cost incurrect predictions<p/><br><img src='img/Screenshot from 2022-11-16 01-38-12.png'>
+   <h3>Cost Function</h3><br><p>The Cost Function measures the total loss over our entire datasets</p><br><img src='img/Screenshot from 2022-11-16 01-39-58.png'><br><img src='img/Screenshot from 2022-11-16 01-40-54.png'>"
+<p>Here we will look two types of Loss</p><br><li>Binary Cross Entropy Loss</li><li>Mean Squared Error Loss</li>"
+<h5>Binary Cross Entropy Loss</h5><br><p>This is used with the models that output a probability between 0 and 1</p><br><img src='img/Screenshot from 2022-11-16 01-48-41.png'><br><img src='img/Screenshot from 2022-11-16 01-49-29.png'>
+   ```python
+   Loss=nn.CrossEntropyLoss()
+   ```
+<h5>Mean Squared Error Loss</h5><br><p>This is used with the regression models that output continuous real number</p><br><img src='img/Screenshot from 2022-11-15 22-07-39.png'><br>
+   ```python
+   Loss = nn.MSELoss()
+   ```
+   <h3>Deep Neural Network</h3><br><h4>Loss Optimization</h4><br><p>We want to find the network weights that achieve the lowest loss</p><br><img src='img/Screenshot from 2022-11-15 22-18-41.png'><br><img src='img/Screenshot from 2022-11-15 22-19-37.png'>
+   
+   <img src='img/Screenshot from 2022-11-15 22-20-20.png'>
+   <img src='img/Screenshot from 2022-11-15 22-22-13.png'>
+   <img src='img/Screenshot from 2022-11-15 22-22-54.png'>
+   <h5>If you will repeat the above process, that is what we call Gradient Descent</h5>"
+  <img src='img/Screenshot from 2022-11-15 22-23-41.png'>
+  <h3>Gradient Descent</h3>
+   <lh><b>Algorithm</b></lh><br><li>Initialize weights randomly <img src='img/Screenshot from 2022-11-15 22-26-45.png'></li><li>Loop until converging</li><br><li>Compute Gradient <img src='img/Screenshot from 2022-11-15 22-31-09.png'></li><li>Update weights <img src='img/Screenshot from 2022-11-15 22-32-21.png'></li><li>Return weights</li><br><img src='img/Screenshot from 2022-11-17 13-14-22.png'>
+   <p>This approach have one problem : the gradients can be very Computationally Intensive to compute</p>
+   <h3>Gradient Descent</h3>
+   <lh><b>Algorithm</b></lh><br><li>Initialize weights randomly <img src='img/Screenshot from 2022-11-15 22-26-45.png'></li><li>Loop until converging</li><br><li>Pick single data point <img src='img/Screenshot from 2022-11-17 13-19-51.png'> </li><br><li>Compute Gradient <img src='img/Screenshot from 2022-11-17 13-20-58.png'></li><li>Update weights <img src='img/Screenshot from 2022-11-15 22-32-21.png'></li><li>Return weights</li><br><img src='img/Screenshot from 2022-11-17 13-14-22.png'>
+  <p>Now using <br><li>Compute Gradient <img src='img/Screenshot from 2022-11-17 13-20-58.png'></li> <br>it become easy to compute but the problem is it is produce very noisy (stochastic)</p><br><p>Now to solve that problem the Stochastic Gradient Descent is used</p>
+   <h3>Stochastic Gradient Descent</h3>
+    <lh><b>Algorithm</b></lh><br><li>Initialize weights randomly <img src='img/Screenshot from 2022-11-15 22-26-45.png'></li><li>Loop until converging</li><br><li>Pick batch of <i>B</i> data points </li><br><li>Compute Gradient <img src='img/Screenshot from 2022-11-17 13-31-49.png'></li><li>Update weights <img src='img/Screenshot from 2022-11-15 22-32-21.png'></li><li>Return weights</li><br><img src='img/Screenshot from 2022-11-17 13-14-22.png'><br><p><i>Now this become Fast to compute and a much better estimate of the true gradient</i></p>"
    ]
   },
   {

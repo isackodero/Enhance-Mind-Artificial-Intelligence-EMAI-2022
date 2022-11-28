@@ -142,101 +142,21 @@
    <lh><b>Algorithm</b></lh><br><li>Initialize weights randomly <img src='img/Screenshot from 2022-11-15 22-26-45.png'></li><li>Loop until converging</li><br><li>Pick single data point <img src='img/Screenshot from 2022-11-17 13-19-51.png'> </li><br><li>Compute Gradient <img src='img/Screenshot from 2022-11-17 13-20-58.png'></li><li>Update weights <img src='img/Screenshot from 2022-11-15 22-32-21.png'></li><li>Return weights</li><br><img src='img/Screenshot from 2022-11-17 13-14-22.png'>
   <p>Now using <br><li>Compute Gradient <img src='img/Screenshot from 2022-11-17 13-20-58.png'></li> <br>it become easy to compute but the problem is it is produce very noisy (stochastic)</p><br><p>Now to solve that problem the Stochastic Gradient Descent is used</p>
    <h3>Stochastic Gradient Descent</h3>
-    <lh><b>Algorithm</b></lh><br><li>Initialize weights randomly <img src='img/Screenshot from 2022-11-15 22-26-45.png'></li><li>Loop until converging</li><br><li>Pick batch of <i>B</i> data points </li><br><li>Compute Gradient <img src='img/Screenshot from 2022-11-17 13-31-49.png'></li><li>Update weights <img src='img/Screenshot from 2022-11-15 22-32-21.png'></li><li>Return weights</li><br><img src='img/Screenshot from 2022-11-17 13-14-22.png'><br><p><i>Now this become Fast to compute and a much better estimate of the true gradient</i></p>"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "3470712a",
-   "metadata": {},
-   "source": [
-    "<h3>Mini-batches while training</h3><br><h4>More accurate estination of gradient</h4><br><li>Smoother convergen</li><br><li>Allows for larger learning rates</li>\n",
-    "\n",
-    "<br><h4>Mini-batches lead to fast trianing!</h4><br><li>can parallelize cotation  +   achieve significant speed increases on GPU's</li>"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "635bea42",
-   "metadata": {},
-   "source": [
-    "<h3>Computing Gradients: Backpropagation</h3>"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "5d4dcb2f",
-   "metadata": {},
-   "source": [
-    "<img src='img/Screenshot from 2022-11-17 02-12-43.png'><br><p>How does a small change in one weight (eg.W_2) affect the final loss J(W)?</p><br><img src='img/Screenshot from 2022-11-17 02-15-05.png'>"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "44a986e7",
-   "metadata": {},
-   "source": [
-    "<img src='img/Screenshot from 2022-11-17 02-17-10.png'><br><img src='img/Screenshot from 2022-11-17 02-18-22.png'>"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "e8cb97ac",
-   "metadata": {},
-   "source": [
-    "<img src='img/Screenshot from 2022-11-17 02-22-26.png'><br><img src='img/Screenshot from 2022-11-17 02-23-09.png'><br><img src='img/Screenshot from 2022-11-17 02-24-46.png'><br><p>Repeat this for every weight in the network using gradients from later layers</p>"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "66c6992b",
-   "metadata": {},
-   "source": [
-    "<h3>Neural Network in Practice: Optimization</h3>"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "7262cc12",
-   "metadata": {},
-   "source": [
-    "<img src='img/Screenshot from 2022-11-15 22-23-41.png'><br><h4>Loss Functions Can Be Difficult to Optimize</h4><br><br><h5>Remember:</h5><br><p>Optimization through gradient descent</p><br><img src='img/Screenshot from 2022-11-17 02-31-38.png'><br><img src='img/Screenshot from 2022-11-17 02-32-28.png'>"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "b07c2530",
-   "metadata": {},
-   "source": [
-    "<h4>Setting the Learning Rate</h4>\n",
-    "<br><p>Small Lerning Rate converge and gets stuck in False local minima</p><br><br><p>Large Lerning Rate overshoot, become unstable and diverge</p><br><br><p>Stable Lerning Rate converge smoothly and avoid local minima</p><br>"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "01f94ca2",
-   "metadata": {},
-   "source": [
-    "<h4>How to deal with this?</h4>\n",
-    "\n",
-    "<br><lh>Idea 1:</lh><li>Try lots of different learning rates and see what works \"just  right\" </li><br><br><lh>Idea 2:</lh><li>Do something smarter! <br> Design an adaptive learning rate that \"adapts\" to the landscape</li>"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "b426a527",
-   "metadata": {},
-   "source": [
-    "<h4>Adaptive Learning Rates</h4>\n",
-    "<br><lh>- Learnign Rate are not longer fixed </lh><br><br><lh>- Can be made larger or smaller depending on </lh><br><li>how large gradient is </li><br><li>How fast learning is happening</li><br><li>size of particular weights</li></li>"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "2edb5a81",
-   "metadata": {},
-   "source": [
-    "<h3>How to adjust learning rate using Pytorch</h3>\n",
+    <lh><b>Algorithm</b></lh><br><li>Initialize weights randomly <img src='img/Screenshot from 2022-11-15 22-26-45.png'></li><li>Loop until converging</li><br><li>Pick batch of <i>B</i> data points </li><br><li>Compute Gradient <img src='img/Screenshot from 2022-11-17 13-31-49.png'></li><li>Update weights <img src='img/Screenshot from 2022-11-15 22-32-21.png'></li><li>Return weights</li><br><img src='img/Screenshot from 2022-11-17 13-14-22.png'><br><p><i>Now this become Fast to compute and a much better estimate of the true gradient</i></p>
+    <h3>Mini-batches while training</h3><br><h4>More accurate estination of gradient</h4><br><li>Smoother convergen</li><br><li>Allows for larger learning rates</li>
+    <br><h4>Mini-batches lead to fast trianing!</h4><br><li>can parallelize cotation  +   achieve significant speed increases on GPU's</li><h3>Computing Gradients: Backpropagation</h3>
+    <img src='img/Screenshot from 2022-11-17 02-12-43.png'><br><p>How does a small change in one weight (eg.W_2) affect the final loss J(W)?</p><br><img src='img/Screenshot from 2022-11-17 02-15-05.png'><img src='img/Screenshot from 2022-11-17 02-17-10.png'><br><img src='img/Screenshot from 2022-11-17 02-18-22.png'>
+    <img src='img/Screenshot from 2022-11-17 02-22-26.png'><br><img src='img/Screenshot from 2022-11-17 02-23-09.png'><br><img src='img/Screenshot from 2022-11-17 02-24-46.png'><br><p>Repeat this for every weight in the network using gradients from later layers</p>
+    <h3>Neural Network in Practice: Optimization</h3>
+    <img src='img/Screenshot from 2022-11-15 22-23-41.png'><br><h4>Loss Functions Can Be Difficult to Optimize</h4><br><br><h5>Remember:</h5><br><p>Optimization through gradient descent</p><br><img src='img/Screenshot from 2022-11-17 02-31-38.png'><br><img src='img/Screenshot from 2022-11-17 02-32-28.png'>
+    <h4>Setting the Learning Rate</h4>\n",
+    "<br><p>Small Lerning Rate converge and gets stuck in False local minima</p><br><br><p>Large Lerning Rate overshoot, become unstable and diverge</p><br><br><p>Stable Lerning Rate converge smoothly and avoid local minima</p><br>
+    <h4>How to deal with this?</h4>
+    
+    <br><lh>Idea 1:</lh><li>Try lots of different learning rates and see what works \"just  right\" </li><br><br><lh>Idea 2:</lh><li>Do something smarter! <br> Design an adaptive learning rate that \"adapts\" to the landscape</li>
+    <h4>Adaptive Learning Rates</h4>\n",
+    "<br><lh>- Learnign Rate are not longer fixed </lh><br><br><lh>- Can be made larger or smaller depending on </lh><br><li>how large gradient is </li><br><li>How fast learning is happening</li><br><li>size of particular weights</li></li>
+    <h3>How to adjust learning rate using Pytorch</h3>\n",
     "<p><u><i>torch.optim.lr_scheduler</i></u> provides several methods to adjust the learning rate based on the number of epochs.</p>"
    ]
   },

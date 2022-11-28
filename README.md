@@ -9,32 +9,42 @@
    <img src='img/Screenshot from 2022-11-15 23-37-28.png'>
    
    
-   ```
+   ```python
    import torch
    import torch.nn as nn 
    ```
-   ```
+   ```python
    device = "cuda" if torch.cuda.is_available() else "cpu"
    print(f"Using {device} device")
    ```
-  ```
+  ```python
   Using cpu device
    
   ```
-  ```
+  ```python
   class Perceptron(nn.Module):\n",
-    "    def __init__(self):\n",
-    "        super().__init__()\n",
-    "        self.flatten=nn.Flatten()\n",
-    "        self.layers=nn.Sequential(\n",
-    "            nn.Linear(2,1),\n",
-    "            nn.Sigmoid()\n",
-    "        )
+        def __init__(self):
+            super().__init__()
+            self.flatten=nn.Flatten()
+            self.layers=nn.Sequential(
+                nn.Linear(2,1),
+                nn.Sigmoid()
+            )
     
-    "    def forward(self, x):\n",
-    "        x=self.flatten(x)\n",
-    "        y_hat=self.layers(x)\n",
-    "        return y_hat
+        def forward(self, x):
+            x=self.flatten(x)
+            y_hat=self.layers(x)
+            return y_hat
+   ```
+   
+   ```python
+   model=Perceptron().to(device)
+   print(model
+   ```
+   
+   ```
+   
+   
    ```
    ]
   },

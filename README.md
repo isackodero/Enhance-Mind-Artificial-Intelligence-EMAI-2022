@@ -6,18 +6,9 @@
    <h3>Building Neural Networks with Perceptron</h3>
    <h4>The Perceptron: Simplified</h4><br><img src='img/Screenshot from 2022-11-15 23-35-26.png'>
    <img src='img/Screenshot from 2022-11-15 23-36-37.png'>
-   <img src='img/Screenshot from 2022-11-15 23-37-28.png'>"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 7,
-   "id": "8acfbb8c",
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "import torch\n",
-    "import torch.nn as nn"
+   <img src='img/Screenshot from 2022-11-15 23-37-28.png'>
+   import torch
+   import torch.nn as nn"
    ]
   },
   {

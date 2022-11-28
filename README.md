@@ -139,6 +139,7 @@
    ```python
    
    Loss = nn.MSELoss()
+   
    ```
    <h3>Deep Neural Network</h3><br><h4>Loss Optimization</h4><br><p>We want to find the network weights that achieve the lowest loss</p><br><img src='img/Screenshot from 2022-11-15 22-18-41.png'><br><img src='img/Screenshot from 2022-11-15 22-19-37.png'>
    

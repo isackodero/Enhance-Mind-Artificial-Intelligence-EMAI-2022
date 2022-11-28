@@ -67,14 +67,14 @@
         def forward(self, x):
             x=self.flatten(x)
             y_hat=self.layers(x)
-            return y_hat
-            
+            return y_hat        
    ```
+   
    ```python
     model=SingleLayerNN()
     
     print(model)
-    ```
+   ```
    ```python
    image=torch.rand(1,32,32)
    
@@ -82,6 +82,7 @@
    print(y)
    
    ```
+   
    <h3>Deep Neural Network</h3><br><img src='img/Screenshot from 2022-11-16 01-14-00.png'><br><img src='img/Screenshot from 2022-11-16 01-14-33.png'>
    
    ```python
@@ -105,8 +106,10 @@
             return y_hat
   ```
    ```python
+   
    model=DeepNN()
    print(model)
+   
    ```
    
    ```python

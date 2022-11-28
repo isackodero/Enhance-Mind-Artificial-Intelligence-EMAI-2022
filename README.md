@@ -43,6 +43,7 @@
    ```
    
    ```python
+   
    x=torch.tensor([[-1,2]], dtype=torch.float)
    
    y=model(x)

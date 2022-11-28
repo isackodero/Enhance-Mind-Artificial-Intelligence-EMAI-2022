@@ -37,13 +37,13 @@
             return y_hat
    ```
    
-   ```PyTorch
+   ```python
    model=Perceptron().to(device)
    print(model
    ```
    
-   ```
-   
+   ```output
+   hhhhhhh
    
    ```
    ]

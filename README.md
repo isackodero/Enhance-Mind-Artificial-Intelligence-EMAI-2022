@@ -125,10 +125,13 @@
 <p>Here we will look two types of Loss</p><br><li>Binary Cross Entropy Loss</li><li>Mean Squared Error Loss</li>"
 <h5>Binary Cross Entropy Loss</h5><br><p>This is used with the models that output a probability between 0 and 1</p><br><img src='img/Screenshot from 2022-11-16 01-48-41.png'><br><img src='img/Screenshot from 2022-11-16 01-49-29.png'>
    ```python
+   
    Loss=nn.CrossEntropyLoss()
+   
    ```
 <h5>Mean Squared Error Loss</h5><br><p>This is used with the regression models that output continuous real number</p><br><img src='img/Screenshot from 2022-11-15 22-07-39.png'><br>
    ```python
+   
    Loss = nn.MSELoss()
    ```
    <h3>Deep Neural Network</h3><br><h4>Loss Optimization</h4><br><p>We want to find the network weights that achieve the lowest loss</p><br><img src='img/Screenshot from 2022-11-15 22-18-41.png'><br><img src='img/Screenshot from 2022-11-15 22-19-37.png'>

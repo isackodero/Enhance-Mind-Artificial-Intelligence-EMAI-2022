@@ -214,13 +214,13 @@
     ```
     
  <h3>Gradient Descent Algorithms</h3>
-   <br><li>SGD<i>{{ torch.optim.SGD(**args) }}</i></li><br>
-   <li>Adam  <i>{{torch.optim.Adam(**args) }}</i></li>
-   <br><li>Adafelta  <i>{{torch.optim.Adafelta(**args) }}</i></li>
-   <br><li>Adagrad  <i>{{torch.optim.Adagrad(**args) }}</i></li>
-   <br><li>RMSProp  <i>{{torch.optim.RMSProp(**args) }}</i></li>
+ <br><li>SGD<i>{{ torch.optim.SGD(**args) }}</i></li><br>
+ <li>Adam  <i>{{torch.optim.Adam(**args) }}</i></li>
+ <br><li>Adafelta  <i>{{torch.optim.Adafelta(**args) }}</i></li>
+ <br><li>Adagrad  <i>{{torch.optim.Adagrad(**args) }}</i></li>
+ <br><li>RMSProp  <i>{{torch.optim.RMSProp(**args) }}</i></li>
    
-    <h4>Putting it all together</h4>
+ <h4>Putting it all together</h4>
     
    ```python 
     
@@ -242,7 +242,7 @@
    
    ```
     
-    <h1>Now Let Make all of that make sense</h1>
+ <h1>Now Let Make all of that make sense</h1>
    ]
   },
   {

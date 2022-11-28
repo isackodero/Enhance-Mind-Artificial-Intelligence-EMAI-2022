@@ -127,15 +127,17 @@
  <h4>Applying Neural Networks</h4><br><br><h5>Example Problem</h5><br><br><h5>Will You Pass if we decide to give an exam about the EMAI Conferrence presentations</h5><br><p>Let's start with a simple two feature model</p>
  <br><br><p>X_1= Number of lectures you attend<br> X_2 = Hours spent on the final project</p><br><img src='img/Screenshot from 2022-11-16 01-31-53.png'><br><img src='img/Screenshot from 2022-11-16 01-32-39.png'><br><img src='img/Screenshot from 2022-11-16 01-33-36.png'><br><img src='img/Screenshot from 2022-11-16 01-34-41.png'>
 <h3>Quantifying Loss</h3><br><p>The LOSS of this will measures the cost incurrect predictions<p/><br><img src='img/Screenshot from 2022-11-16 01-38-12.png'>
-   <h3>Cost Function</h3><br><p>The Cost Function measures the total loss over our entire datasets</p><br><img src='img/Screenshot from 2022-11-16 01-39-58.png'><br><img src='img/Screenshot from 2022-11-16 01-40-54.png'>"
-<p>Here we will look two types of Loss</p><br><li>Binary Cross Entropy Loss</li><li>Mean Squared Error Loss</li>"
+   <h3>Cost Function</h3><br><p>The Cost Function measures the total loss over our entire datasets</p><br><img src='img/Screenshot from 2022-11-16 01-39-58.png'><br><img src='img/Screenshot from 2022-11-16 01-40-54.png'>
+<p>Here we will look two types of Loss</p><br><li>Binary Cross Entropy Loss</li><li>Mean Squared Error Loss</li>
 <h5>Binary Cross Entropy Loss</h5><br><p>This is used with the models that output a probability between 0 and 1</p><br><img src='img/Screenshot from 2022-11-16 01-48-41.png'><br><img src='img/Screenshot from 2022-11-16 01-49-29.png'>
+   
    ```python
    
    Loss=nn.CrossEntropyLoss()
    
    ```
 <h5>Mean Squared Error Loss</h5><br><p>This is used with the regression models that output continuous real number</p><br><img src='img/Screenshot from 2022-11-15 22-07-39.png'><br>
+   
    ```python
    
    Loss = nn.MSELoss()
